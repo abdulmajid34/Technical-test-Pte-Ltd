@@ -1,5 +1,5 @@
-<template>
-    <div style="position: relative;">
+<template>    
+    <div style="position: relative;" @click="toProductDetail(list.id)">
         <img class="img-product" v-if="list.image" :src="list.image" alt="image"
             style="width: 176px; height: 214px; border-radius: 10px; object-fit: contain;">
         <img class="img-product" v-else src="../assets/images/image.png" alt="image"
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import router from '../router';
+
     export default {
         name: "LatestProduct",
         props: {
@@ -31,6 +33,9 @@
                     currency: 'USD',
                 });
                 return formatter.format(price);
+            },
+            toProductDetail(id) {
+                router.push({ name: 'productDetail', params: { id: id }})
             }
         }
     }

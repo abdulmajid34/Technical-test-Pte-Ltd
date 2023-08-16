@@ -3,7 +3,7 @@
     <div class="flex">
       <div class="img-container">
         <img src="../assets/images/Ellipse_3.png" class="img-elipse" alt="elipse_3">
-
+        
       </div>
     </div>
     <div class="container" style="margin-top: -10rem;">
