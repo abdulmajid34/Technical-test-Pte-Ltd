@@ -26,7 +26,7 @@
             
       <div class="card-product">
         <div v-for="(list, idx) in listProduct" :key="idx" class="card-content">
-          <LatestProduct :list="list" />
+          <LatestProduct :list="list" :idx="idx" />
         </div>
       </div>           
     </div>

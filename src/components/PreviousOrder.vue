@@ -30,13 +30,15 @@
                             180.00</span>
                     </div>
                     <div class="col-4">
-                        <div class="p-4"
-                            style="background: linear-gradient(to bottom right ,#2D9CDB, #0099EE, #CAECFF); width: 90px; height: 96px;">
-                            <img src="../assets/images/note.png" style="width: 46px; height: 46px;" alt="invoice_img">
-                            <p
-                                style="font-size: 10.45px; line-height: 12.24px; font-weight: 500; color: #ffff; padding-top: 6px;">
-                                INVOICE</p>
-                        </div>
+                        <router-link to="/invoice" style="text-decoration: none;">
+                            <div class="p-4"
+                                style="background: linear-gradient(to bottom right ,#2D9CDB, #0099EE, #CAECFF); width: 90px; height: 96px;">
+                                <img src="../assets/images/note.png" style="width: 46px; height: 46px;" alt="invoice_img">
+                                <p
+                                    style="font-size: 10.45px; line-height: 12.24px; font-weight: 500; color: #ffff; padding-top: 6px;">
+                                    INVOICE</p>
+                            </div>
+                        </router-link>
                     </div>
                 </div>
             </div>

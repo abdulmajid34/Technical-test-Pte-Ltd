@@ -21,7 +21,8 @@
     export default {
         name: "LatestProduct",
         props: {
-            list: Object
+            list: Object,
+            idx: Number
         },
         methods: {
             moneyFormat(price) {
