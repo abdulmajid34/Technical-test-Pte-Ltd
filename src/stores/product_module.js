@@ -14,7 +14,7 @@ export const productStore = defineStore('product_module', {
                 method: "GET",
                 url: 'https://belaundry-api.sebaris.link/platform/product',
                 headers: {
-                    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoxLCJpYXQiOjE2OTAzNTc4Mzd9.ILF698ktm1Zw_ssLXsmCAMAGEz3_LIVA3_XWXcHWK0k"
+                    token: localStorage.getItem('user_token')
                 }
             })
             .then(({ data }) => {                
@@ -29,7 +29,7 @@ export const productStore = defineStore('product_module', {
                 method: 'GET',
                 url: `https://belaundry-api.sebaris.link/platform/product/${id}`,
                 headers: {
-                    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoxLCJpYXQiOjE2OTAzNTc4Mzd9.ILF698ktm1Zw_ssLXsmCAMAGEz3_LIVA3_XWXcHWK0k"
+                    token: localStorage.getItem('user_token')
                 }
             })
             .then(({ data }) => {

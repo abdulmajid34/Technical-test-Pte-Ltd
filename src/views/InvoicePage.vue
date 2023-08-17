@@ -7,7 +7,7 @@
                 </div>
             </router-link>
 
-            <div class="card card-style mx-4">
+            <div class="card card-style mx-auto" >
                 <div class="title-style">
                     <h2 class="">ORDER SUMMARY</h2>
                 </div>
