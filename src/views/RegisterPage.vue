@@ -60,7 +60,6 @@ const submitFormRegister = async (event) => {
             password: password.value
         }        
         await storeUser.fetchApiRegister(formData)
-        formData.reset();
 
     } catch(err) {
         console.log(err);

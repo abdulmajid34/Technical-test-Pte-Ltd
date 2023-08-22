@@ -1,13 +1,16 @@
 <template>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="d-flex justify-content-between">
+        <div class="">
             <h2 class="text-white mx-4"
-                style="margin-bottom: 16px; font-weight: 500; line-height: 25.11px; font-size: 21.43px;">Welcome, john
+                style="margin-bottom: 16px; font-weight: 500; line-height: 25.11px; font-size: 21.43px;">Welcome, {{ getName }}
             </h2>
         </div>
+        <div class="">
+            <h2 class="text-white" style="cursor: pointer; margin-bottom: 16px; font-weight: 500; line-height: 25.11px; font-size: 21.43px;" @click="handleLogout">logout</h2>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="d-flex">
+        <div class="">
             <div class="card shadow-sm mx-4" style="border-radius: 10px; width: 302px; height: 167px; border: none;">
                 <div>
                     <img src="../assets/images/Ellipse_1.png" alt="elipse_1" style="width: 100px; height: 90px;">
@@ -26,6 +29,22 @@
         </div>
     </div>
 </template>
+
+<script setup>
+import { userStore } from '../stores/user_module';
+
+const storeUser = userStore();
+
+
+let getName = localStorage.getItem('name')
+
+const handleLogout = async (event) => {
+    event.preventDefault();
+    await storeUser.logout()
+}
+
+
+</script>
 
 <style scoped>
 </style>

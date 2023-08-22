@@ -9,7 +9,6 @@ export const userStore = defineStore('user', {
     }),
     actions: {
         async fetchApiRegister(payload) {
-            console.log(payload, 'payload');
             await axios({
                 method: 'POST',
                 url: 'https://belaundry-api.sebaris.link/platform/user/sign-up',
@@ -24,6 +23,7 @@ export const userStore = defineStore('user', {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                      localStorage.setItem('name', payload.name)
                     router.push({ name: 'loginPage' })
                 } else {
                     Swal.fire({
@@ -60,11 +60,11 @@ export const userStore = defineStore('user', {
                         icon: 'success',
                         title: data.data.message,
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 1500 
                       })
+                    localStorage.setItem('name', payload.name)
                     localStorage.setItem('user_token', data.data.response)
                     router.push({ name: 'home' })
-
                 } else {
                     Swal.fire({
                         position: 'center',
@@ -85,6 +85,10 @@ export const userStore = defineStore('user', {
                   })
             })
 
+        },
+        logout() {
+            localStorage.clear()
+            router.push({ name: 'loginPage' })
         }
     }
 })

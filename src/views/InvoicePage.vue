@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="container">
+        <div class="container" style="">
             <router-link to="/">
                 <div style="margin-top: 32px;">
                     <img class="icon-chev" src="../assets/images/chevron_left.png"  alt="back_icon">
@@ -98,7 +98,7 @@
                         </div>
                     </div>
 
-                    <div class="content-watshapp-style">
+                    <div class="content-watshapp-style" style="margin-bottom: 5rem;">
                         <div style="margin-right: 11px;">
                             <img src="../assets/images/chat_alt.png" alt="icon" style="width: 34px;">
                         </div>

@@ -3,7 +3,6 @@
     <div class="">
       <div class="img-container">
         <img src="../assets/images/Ellipse_3.png" class="img-elipse" alt="elipse_3">
-
       </div>
     </div>
     <div class="container" style="margin-top: -10rem;">
@@ -25,7 +24,7 @@
       </div>
             
       <div class="card-product">
-        <div v-for="(list, idx) in listProduct" :key="idx" class="card-content">
+        <div v-for="(list, idx) in stateDataProduct" :key="idx" class="card-content">
           <LatestProduct :list="list" :idx="idx" />
         </div>
       </div>           
@@ -40,21 +39,19 @@
   import CardBalance from '../components/CardBalance.vue'
   import MostOrdered from '../components/MostOrdered.vue'
   import PreviousOrder from '../components/PreviousOrder.vue';
-  import { computed, onMounted } from 'vue';
+  import {  onMounted } from 'vue';
   import { productStore } from '../stores/product_module';
+  import { storeToRefs } from 'pinia';
+  
 
   const storeListProduct = productStore();
 
-  const listProduct = computed(() => {
-    return storeListProduct.stateDataProduct;
-  })
-
-  
+  const {fetchDataProduct} = storeListProduct;
+  const {stateDataProduct} = storeToRefs(storeListProduct);
 
   onMounted(() => {
-    storeListProduct.fetchDataProduct();
+    fetchDataProduct();
   })
-
 
 </script>
 

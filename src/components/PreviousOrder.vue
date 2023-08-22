@@ -1,13 +1,13 @@
 <template>
-    <div class="row" style="margin-top: 40px">
-        <div class="col-md-4">
+    <div class="d-flex" style="margin-top: 40px">
+        <div class="">
           <h2 class="mx-4" style="color: #3B97CB; font-weight: 700; font-size: 16.08px; line-height: 18.84px;">PREVIOUS
             ORDER</h2>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
+    <div class="d-flex">
+        <div class="">
             <div class="card mx-4" style="width: 302px; height: 96px; border-radius: 10px;">
                 <div class="row">
                     <div class="col-3">

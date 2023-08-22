@@ -1,15 +1,14 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { ref } from 'vue'
 
-export const productStore = defineStore('product_module', {
-    state: () => ({
-        stateDataProduct: [],
-        stateDetailProduct: {},
-        isSuccess: false,
-        isError: false
-    }),    
-    actions: {
-        async fetchDataProduct() {
+export const productStore = defineStore('product_module', () => {
+        const stateDataProduct =  ref([]);
+        const stateDetailProduct =  ref({});
+        const isSuccess =  ref(false);
+        const isError =  ref(false);
+        
+        const fetchDataProduct =async()=> {
             await axios({
                 method: "GET",
                 url: 'https://belaundry-api.sebaris.link/platform/product',
@@ -18,13 +17,13 @@ export const productStore = defineStore('product_module', {
                 }
             })
             .then(({ data }) => {                
-                this.stateDataProduct = data.response
+                stateDataProduct.value = data.response
             })  
             .catch((err) => {
                 console.log(err);
             })
-        },
-        async fetchDetailProduct(id) {
+        };
+        const fetchDetailProduct = async(id)=> {
             await axios({
                 method: 'GET',
                 url: `https://belaundry-api.sebaris.link/platform/product/${id}`,
@@ -33,11 +32,20 @@ export const productStore = defineStore('product_module', {
                 }
             })
             .then(({ data }) => {
-                this.stateDetailProduct = data.response
+                stateDetailProduct.value = data.response
             })
             .catch((error) => {
                 console.log(error);
             })
         }
-    }
+
+        return {
+             stateDataProduct,
+         stateDetailProduct,
+         isSuccess,
+         isError,
+         fetchDataProduct,
+         fetchDetailProduct
+        };
+    
 })

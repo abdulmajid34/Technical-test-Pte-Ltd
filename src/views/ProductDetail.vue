@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="text-center" style="position: relative;">
-            <img v-if="detailProduct.image" style="width: 375px; height: 455px; object-fit: contain; border-radius: 10px;" :src="detailProduct.image" class="card-img-top" alt="...">
+            <img v-if="stateDetailProduct.image" style="width: 375px; height: 455px; object-fit: contain; border-radius: 10px;" :src="stateDetailProduct.image" class="card-img-top" alt="...">
             <img v-else style="width: 375px; height: 455px; object-fit: contain; border-radius: 10px;" src="../assets/images/image.png" class="card-img-top" alt="...">
         </div>
         <router-link to="/">
@@ -17,11 +17,11 @@
         </div>
 
         <div style="margin-top: 14px;">
-            <h1 class="item-name-style">{{ detailProduct.name }}</h1>
+            <h1 class="item-name-style">{{ stateDetailProduct.name }}</h1>
         </div>
 
         <div style="">
-            <span class="detail-price-style">{{ moneyFormat(detailProduct.price) }}/PC</span>
+            <span class="detail-price-style">{{ moneyFormat(stateDetailProduct.price) }}/PC</span>
         </div>
 
         <div style="margin-top: 14px;">
@@ -48,16 +48,15 @@
 
 <script setup>
     import { useRoute } from 'vue-router'
-    import { onMounted, computed } from 'vue';
+    import { onMounted } from 'vue';
     import { productStore } from '../stores/product_module';
+    import { storeToRefs } from 'pinia';
 
     const storeListProduct = productStore(); 
+    const { stateDetailProduct } = storeToRefs(storeListProduct);
+    const { fetchDetailProduct } = storeListProduct
 
-    const route = useRoute();    
-
-    const detailProduct = computed(() => {
-        return storeListProduct.stateDetailProduct
-    })    
+    const route = useRoute();       
 
     const moneyFormat = (price) => {
         const formatter = new Intl.NumberFormat('en-US', {
@@ -68,7 +67,7 @@
     }
 
     onMounted(() => {
-        storeListProduct.fetchDetailProduct(route.params.id);
+        fetchDetailProduct(route.params.id);
     })
 
 </script>
